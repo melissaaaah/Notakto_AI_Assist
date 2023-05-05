@@ -1,5 +1,6 @@
 import random
 import sys
+from games import*
 
 class Game:
     def __init__(self):
@@ -308,6 +309,27 @@ class Game:
     def makeMove(self, boards, move):
         boards[move[0]][int(move[1])] = 'X'
 
+    
+    def getNextMove(self, boards):
+        '''
+            ADDED FUNCTION
+            Returns list of MAX-value moves for player to win
+        '''
+        
+        legalActions = self.getLegalActions(boards)
+        maxValue = -float("inf")
+        maxAct = None
+        for act in legalActions:
+            succ  = self.getSuccBoards(boards, act)
+            evalSucc = self.evalFunc(succ)
+            if evalSucc > maxValue:
+                maxValue = evalSucc
+        maxActs = [act for act in legalActions \
+                if self.evalFunc(self.getSuccBoards(boards, act)) == maxValue]
+        
+        print(f"AI Assistant: Your next move should be one of these \n{maxActs}\n for an advantage\n")
+        return maxActs
+    
     # ============ game flow section ============
     # introduction of the game
     def intro(self):
@@ -341,6 +363,7 @@ class Game:
                 move = self.getAIMove(self.boards)
                 print ("AI: " + move)
             elif turn == "Player":
+                self.getNextMove(self.boards) #added getNextMove call in loop
                 move = self.getPlayerMove(self.boards)
             self.makeMove(self.boards, move)
             # print all living boards
