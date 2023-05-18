@@ -340,7 +340,7 @@ class Game:
     def startGame(self):
         print ('''
                 \n\t-------------------------------------
-                \n\tWelcome to 3-board misere Tic-Tac-Toe
+                \n\tWelcome to 3-board Notakto
                 \n\t-------------------------------------
               ''')
         self.intro()
@@ -398,5 +398,5 @@ class Game:
             sys.exit()
 
 if __name__ == "__main__":
-    TicTacToe = Game()
-    TicTacToe.startGame()
+    Notakto = Game()
+    Notakto.startGame()
