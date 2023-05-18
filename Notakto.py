@@ -1,6 +1,7 @@
 import random
 import sys
 from games import*
+#import pygame
 
 class Game:
     def __init__(self):
@@ -61,10 +62,7 @@ class Game:
                                             self.boards[key[0]][6:9] + \
                                             self.boards[key[1]][6:9] + \
                                             self.boards[key[2]][6:9]))
-        #print "Fingerprints: " + str([self.getFingerprint(self.boards[key]) \
-        #                            for key in ["A", "B", "C"]]) + " = " + \
-        #                            str(self.multiplyFP(self.boards)) + "\n"
-
+        
     # returns True if the input single board is dead
     def isDead(self, board):
         for pattern in self.dead_patterns:
@@ -309,13 +307,8 @@ class Game:
     def makeMove(self, boards, move):
         boards[move[0]][int(move[1])] = 'X'
 
-    
+    #Returns list of Max-value moves for player to win
     def getNextMove(self, boards):
-        '''
-            ADDED FUNCTION
-            Returns list of MAX-value moves for player to win
-        '''
-        
         legalActions = self.getLegalActions(boards)
         maxValue = -float("inf")
         maxAct = None
