@@ -4,6 +4,7 @@
 Running the file Noktato.py will simulate a game of Noktato in the console. 
 The opponent will take the first move then prompt the user to make a move among 
 the list of suggested moves provided by the assistant. 
+**games.py contains minmax algorithms used in Notakto
 
 # How To Play
 1. Both Players Utilize 'X' as their mark
@@ -23,3 +24,5 @@ Press 'Play' to start the game. **This only lets you play once.
 The GUI follows a similar simulation to Notakto.py running on the console. 
 GUI is missing features such as displaying the opponent's move as a pop up window, resetting the game if user 
 continues to play, and closing the window once the game has ended. 
+
+
