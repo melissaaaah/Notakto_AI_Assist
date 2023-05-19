@@ -11,7 +11,13 @@ the list of suggested moves provided by the assistant.
 3. The User will enter in a valid Cell# to make their mark.
 4. When a board is completed, it is removed from the space
 
-** An AI Assistant is provided guiding the user on how to win
+** An AI Assistant is provided, guiding the user on how to win
 
 The user may exit the game at any time with the command 'Ctrl + C' 
 Once the game is over, user has the choice to play again with response 'y' or 'n'.
+
+## tkinterGUI.py
+Running the file tkinterGUI.py will open a window for the user to start the game. 
+The GUI follows a similar simulation to Notakto.py running on the console. 
+GUI is missing features such as displaying the opponent's move as a pop up window, resetting the game if user 
+continues to play, and closing the window once the game has ended. 
