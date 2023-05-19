@@ -2,7 +2,7 @@ import random
 import sys
 from games import*
 #import pygame
-
+import tkinter as tk
 class Game:
     def __init__(self):
         # initial boards
@@ -306,7 +306,7 @@ class Game:
     # execute the move on boards
     def makeMove(self, boards, move):
         boards[move[0]][int(move[1])] = 'X'
-
+        
     #Returns list of Max-value moves for player to win
     def getNextMove(self, boards):
         legalActions = self.getLegalActions(boards)
@@ -326,15 +326,14 @@ class Game:
     # ============ game flow section ============
     # introduction of the game
     def intro(self):
-        print ('''
-                \n\tThis game contains three 3x3 classic Tic-Tac-Toe boards.
-                \n\tBoth player and AI play 'X'.
-                \n\tThe player who plays the last move loses the game.
-                \n\tAI will always make the first move.
-                \n\tYou can play the game as follows: e.g., if you enter 'A1',
-                \n\tthat means you want to put a cross in position 1 of board A.
-                \n\tPress Ctrl + C to quit the game
-              ''')
+        intro = """\n\tThis game contains three 3x3 classic Tic-Tac-Toe boards.
+                    \n\tBoth player and AI play 'X'.
+                    \n\tThe player who plays the last move loses the game.
+                    \n\tAI will always make the first move.
+                    \n\tYou can play the game as follows: e.g., if you enter 'A1',
+                    \n\tthat means you want to put a cross in position 1 of board A.
+                    \n\tExit the game any time by closing the window"""
+        return intro
 
     # start the game
     def startGame(self):
