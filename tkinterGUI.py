@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+
 Tkinter-based GUI for Notakto
+
 """
 import tkinter as tk
 from Notakto import Game
@@ -22,6 +24,8 @@ class GameGUI:
         }
         self.notakto = Game()
         self.player = ''
+        
+    #Displays board layout
     def create_board_labels(self):
         column = 0
         for board_key in self.boards.keys():
@@ -45,9 +49,11 @@ class GameGUI:
                 boardLabel.grid(row=(i // 3) + 1, column=i % 3)
                 self.board_labels[(board_key, i)] = boardLabel
                 
+    #Update points to update_boardlabels
     def printBoards(self, boards):
         self.update_board_labels(boards)
         
+    #Updates the current board
     def update_board_labels(self, boards):
         #self.checkDeadBoard()
         for key, board in boards.items():
@@ -55,6 +61,7 @@ class GameGUI:
                 value = board[i] if board[i] != 'X' else 'X'
                 self.board_labels[key][i] = value
         
+    #Checks if Game has ended
     def checkGameOver(self):        
         deadBoard = self.notakto.isAllBoardDead(self.boards)
         
@@ -62,6 +69,7 @@ class GameGUI:
             lastPlayer = self.player
             messagebox.showwarning('Player Lost', lastPlayer + ' Lost')
             
+    #Checks for Dead Boards in State
     def checkDeadBoard(self):
         #Check for dead state
         for key,board in self.boards.items():
@@ -90,6 +98,7 @@ class GameGUI:
         self.current_frame = play_area
         self.opponent_move()
         
+    #Handles user input on button click
     def userInput(self, i, board_key, mark):
         self.player = 'User'
         move = board_key + str(mark)
@@ -104,6 +113,7 @@ class GameGUI:
         self.checkGameOver()
         self.opponent_move()
         
+    #Automated move by Opponent
     def opponent_move(self):
         self.player = 'Opponent'
         move = self.notakto.getAIMove(self.boards)
@@ -121,7 +131,7 @@ class GameGUI:
         self.checkGameOver()
         self.AIassist(board_key,move)
 
-        
+    #Assistant gives suggested moves
     def AIassist(self,board_key,i):
         print(self.boards)
         messagebox.showinfo('Assistant', notaktoGui.getNextMove(self.boards))
@@ -131,7 +141,7 @@ class GameGUI:
 window = tk.Tk()
 width = 800
 height = 600
-#window.geometry(f"{width}x{height}")
+
 window.title("Notakto")
 my_label = tk.Label(text=notaktoGui.intro(),
                     background = 'black',
@@ -140,8 +150,9 @@ my_label = tk.Label(text=notaktoGui.intro(),
 #Displays label
 my_label.grid() 
 play_area = tk.Frame(window, bg = 'black')
-game = GameGUI(window)
+
 #Create instance of GameGUI class
+game = GameGUI(window)
 
 #Creates Play Button
 play_button = tk.Button(text="PLAY", command = game.start_game_button)
