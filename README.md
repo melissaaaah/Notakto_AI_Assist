@@ -18,6 +18,8 @@ Once the game is over, user has the choice to play again with response 'y' or 'n
 
 ## tkinterGUI.py
 Running the file tkinterGUI.py will open a window for the user to start the game. 
+Press 'Play' to start the game. **This only lets you play once.
+
 The GUI follows a similar simulation to Notakto.py running on the console. 
 GUI is missing features such as displaying the opponent's move as a pop up window, resetting the game if user 
 continues to play, and closing the window once the game has ended. 
